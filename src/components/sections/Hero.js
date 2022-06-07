@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
-import ButtonGroup from '../elements/ButtonGroup';
-import Button from '../elements/Button';
+// import ButtonGroup from '../elements/ButtonGroup';
+// import Button from '../elements/Button';
 
 const propTypes = {
   ...SectionProps.types

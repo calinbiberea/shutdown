@@ -48,10 +48,3 @@ jobs:
 
       - name: Test
         run: npm test
-
-      - name: Start CD
-        if: github.ref == 'refs/heads/main'
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          event-type: start-cd

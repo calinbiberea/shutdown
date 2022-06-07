@@ -27,6 +27,10 @@ jobs:
           path: node_modules
           key: node-cache-${{ hashFiles('package-lock.json') }}
 
+      - name: Install node modules
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
+
       - name: Build
         run: npm run build
 

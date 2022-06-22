@@ -18,7 +18,6 @@ import Home from './views/Home';
 // };
 
 const App = () => {
-
   const childRef = useRef();
   let location = useLocation();
 

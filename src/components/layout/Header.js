@@ -9,7 +9,8 @@ const propTypes = {
   hideNav: PropTypes.bool,
   hideSignin: PropTypes.bool,
   bottomOuterDivider: PropTypes.bool,
-  bottomDivider: PropTypes.bool
+  bottomDivider: PropTypes.bool,
+  setMenuBarOpen: PropTypes.func,
 }
 
 const defaultProps = {
@@ -17,16 +18,17 @@ const defaultProps = {
   hideNav: false,
   hideSignin: false,
   bottomOuterDivider: false,
-  bottomDivider: false
+  bottomDivider: false,
+  setMenuBarOpen: null,
 }
 
 const Header = ({
   className,
   navPosition,
   hideNav,
-  hideSignin,
   bottomOuterDivider,
   bottomDivider,
+  setMenuBarOpen,
   ...props
 }) => {
 
@@ -47,13 +49,11 @@ const Header = ({
   });
 
   const openMenu = () => {
-    document.body.classList.add('off-nav-is-active');
     nav.current.style.maxHeight = nav.current.scrollHeight + 'px';
     setIsactive(true);
   }
 
   const closeMenu = () => {
-    document.body.classList.remove('off-nav-is-active');
     nav.current && (nav.current.style.maxHeight = null);
     setIsactive(false);
   }
@@ -66,6 +66,11 @@ const Header = ({
     if (!nav.current) return
     if (!isActive || nav.current.contains(e.target) || e.target === hamburger.current) return;
     closeMenu();
+  }
+
+  const openMenuBar = () => {
+    closeMenu();
+    setMenuBarOpen(true);
   }
 
   const classes = classNames(
@@ -93,7 +98,7 @@ const Header = ({
                 className="header-nav-toggle"
                 onClick={isActive ? closeMenu : openMenu}
               >
-                <span className="screen-reader">Menu</span>
+                <span className="screen-reader">Navigare</span>
                 <span className="hamburger">
                   <span className="hamburger-inner"></span>
                 </span>
@@ -112,17 +117,17 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="#0" onClick={closeMenu}>Menu Bar</Link>
+                      <Link onClick={() => openMenuBar()}>Menu Bar</Link>
                     </li>
                   </ul>
-                  {!hideSignin &&
-                    <ul
-                      className="list-reset header-nav-right"
-                    >
-                      <li>
-                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Harta</Link>
-                      </li>
-                    </ul>}
+
+                  <ul
+                    className="list-reset header-nav-right"
+                  >
+                    <li>
+                      <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Harta</Link>
+                    </li>
+                  </ul>
                 </div>
               </nav>
             </>}

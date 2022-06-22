@@ -71,7 +71,7 @@ $form--color: (
 	input-inverse: 				get-color(dark, 3),
 	input-placeholder-inverse:	null,
 	label-inverse: 				get-color(dark, 3),
-    check-radio-inverse: 		get-color(dark, 3) 
+    check-radio-inverse: 		get-color(dark, 3)
 );
 
 // Forms: background color
@@ -83,7 +83,7 @@ $form--bg: (
 	switch:							get-color(dark, 3),
     switch-checked:					get-color(primary, 1),
     range-track:                    get-color(light, 2),
-    range-thumb:                    get-color(primary, 1),    
+    range-thumb:                    get-color(primary, 1),
 	// ↓ Inverted colors
 	input-inverse: 					null,
 	input-focus-inverse: 			null,

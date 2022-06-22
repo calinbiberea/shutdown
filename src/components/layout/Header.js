@@ -11,6 +11,7 @@ const propTypes = {
   bottomOuterDivider: PropTypes.bool,
   bottomDivider: PropTypes.bool,
   setMenuBarOpen: PropTypes.func,
+  setFaqOpen: PropTypes.func,
 }
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
   bottomOuterDivider: false,
   bottomDivider: false,
   setMenuBarOpen: null,
+  setFaqOpen: null,
 }
 
 const Header = ({
@@ -29,6 +31,7 @@ const Header = ({
   bottomOuterDivider,
   bottomDivider,
   setMenuBarOpen,
+  setFaqOpen,
   ...props
 }) => {
 
@@ -71,6 +74,11 @@ const Header = ({
   const openMenuBar = () => {
     closeMenu();
     setMenuBarOpen(true);
+  }
+
+  const openFaq = () => {
+    closeMenu();
+    setFaqOpen(true);
   }
 
   const classes = classNames(
@@ -121,11 +129,21 @@ const Header = ({
                     </li>
                   </ul>
 
+                  <ul className={
+                    classNames(
+                      'list-reset text-xs',
+                      navPosition && `header-nav-${navPosition}`
+                    )}>
+                    <li>
+                      <Link onClick={() => openMenuBar()}>Harta</Link>
+                    </li>
+                  </ul>
+
                   <ul
                     className="list-reset header-nav-right"
                   >
                     <li>
-                      <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Harta</Link>
+                      <Link className="button button-primary button-wide-mobile button-sm" onClick={() => openFaq()}>FAQ</Link>
                     </li>
                   </ul>
                 </div>

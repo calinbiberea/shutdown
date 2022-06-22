@@ -23,7 +23,7 @@ const LayoutDefault = ({ children }) => {
             <Modal.Header closeButton />
 
             <Modal.Body style={{
-              maxHeight: 'calc(125vh - 210px)',
+              maxHeight: '80vh',
               overflowY: 'auto'
             }}>
               <Image
